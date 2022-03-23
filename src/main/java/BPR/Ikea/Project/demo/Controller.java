@@ -13,4 +13,12 @@ public class Controller {
     public String helloWorld(){
         return "Hej fra hello world!! ";
     }
+
+    // https://batchelor-project-ikea.herokuapp.com/
+    @GetMapping("/")
+    public String hello(){
+        return "Main ";
+    }
+
+
 }
