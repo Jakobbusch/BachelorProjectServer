@@ -17,7 +17,7 @@ public class Controller {
     // https://batchelor-project-ikea.herokuapp.com/
     @GetMapping("/")
     public String hello(){
-        return "Main ";
+        return "Put screws[5] to marking [7]";
     }
 
 
