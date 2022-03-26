@@ -10,7 +10,7 @@ import java.util.Map;
 @RestController
 public class Controller {
 
-    DBConnection db;
+    DBConnection db= new DBConnection();
 
     // http://localhost:8080/hello-world
     @GetMapping("/hello-world")
