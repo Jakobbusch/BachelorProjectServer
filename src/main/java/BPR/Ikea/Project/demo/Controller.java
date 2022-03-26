@@ -4,9 +4,12 @@ package BPR.Ikea.Project.demo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class Controller {
 
+    DBConnection db = new DBConnection();
 
     // http://localhost:8080/hello-world
     @GetMapping("/hello-world")
@@ -16,8 +19,8 @@ public class Controller {
 
     // https://batchelor-project-ikea.herokuapp.com/
     @GetMapping("/")
-    public String hello(){
-        return "Put screws[5] to marking [7]";
+    public List <String> hello(){
+        return db.sqlTest;
     }
 
 
