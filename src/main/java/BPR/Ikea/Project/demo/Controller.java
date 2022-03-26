@@ -4,8 +4,6 @@ package BPR.Ikea.Project.demo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 public class Controller {
 
@@ -19,8 +17,8 @@ public class Controller {
 
     // https://batchelor-project-ikea.herokuapp.com/
     @GetMapping("/")
-    public List <String> hello(){
-        return db.sqlTest;
+    public String hello(){
+        return db.record.toJSONString();
     }
 
 

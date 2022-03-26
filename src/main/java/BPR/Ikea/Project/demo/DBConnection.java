@@ -1,5 +1,6 @@
 package BPR.Ikea.Project.demo;
 
+import org.json.simple.JSONObject;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import java.net.URI;
@@ -12,10 +13,9 @@ import java.util.List;
 
 @Configuration
 public class DBConnection {
-//mysql://b71f9c84952672:c5fcf155@eu-cdbr-west-02.cleardb.net/heroku_ed5823d8c16859d?reconnect=true
 
     public List<String> sqlTest;
-
+    JSONObject record = new JSONObject();
     public void readDataBase() throws Exception{
         try{
 
@@ -25,11 +25,10 @@ public class DBConnection {
             Statement stmt=con.createStatement();
             ResultSet rs=stmt.executeQuery("select VarTest FROM testtable");
             while(rs.next())
+                record.put("IntTest", rs.getInt("IntTest"));
+                record.put("VarTest", rs.getString("VarTest"));
 
-            sqlTest.add(rs.getString(1));
 
-                //sqlTest.add(rs.getString())
-                //System.out.println(rs.getString(1)+"  "+rs.getString(2)+"  "+rs.getString(3));
             con.close();
         }catch(Exception e)
         { System.out.println(e);}
