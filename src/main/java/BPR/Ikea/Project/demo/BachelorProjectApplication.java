@@ -17,5 +17,7 @@ public class BachelorProjectApplication {
 		DBConnection db= new DBConnection();
 
 		db.readDataBase();
+		System.out.println(db.record.toJSONString());
+
 	}
 }

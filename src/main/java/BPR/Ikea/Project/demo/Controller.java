@@ -1,6 +1,7 @@
 package BPR.Ikea.Project.demo;
 
 
+import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,9 +18,8 @@ public class Controller {
 
     // https://batchelor-project-ikea.herokuapp.com/
     @GetMapping("/")
-    public String hello(){
-        System.out.println(db.record.toJSONString());
-        return db.record.toJSONString();
+    public JSONObject hello(){
+        return db.record;
     }
 
 
