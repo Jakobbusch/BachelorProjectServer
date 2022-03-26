@@ -5,6 +5,8 @@ import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 public class Controller {
 
@@ -18,8 +20,10 @@ public class Controller {
 
     // https://batchelor-project-ikea.herokuapp.com/
     @GetMapping("/")
-    public JSONObject hello(){
+    public Map<String,Object> hello(){
+
         return db.record;
+
     }
 
 
