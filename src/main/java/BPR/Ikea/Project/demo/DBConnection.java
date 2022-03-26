@@ -14,7 +14,7 @@ import java.util.List;
 @Configuration
 public class DBConnection {
 
-    public List<String> sqlTest;
+
     JSONObject record = new JSONObject();
     public void readDataBase() throws Exception{
         try{
@@ -25,8 +25,9 @@ public class DBConnection {
             Statement stmt=con.createStatement();
             ResultSet rs=stmt.executeQuery("select VarTest FROM testtable");
             while(rs.next())
-                record.put("IntTest", rs.getInt("IntTest"));
                 record.put("VarTest", rs.getString("VarTest"));
+
+
 
 
             con.close();

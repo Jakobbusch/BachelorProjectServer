@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Controller {
 
-    DBConnection db = new DBConnection();
+    DBConnection db;
 
     // http://localhost:8080/hello-world
     @GetMapping("/hello-world")
@@ -18,6 +18,7 @@ public class Controller {
     // https://batchelor-project-ikea.herokuapp.com/
     @GetMapping("/")
     public String hello(){
+        System.out.println(db.record.toJSONString());
         return db.record.toJSONString();
     }
 
