@@ -9,13 +9,16 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
 public class DBConnection {
 
-Controller controller = new Controller();
+    Controller controller = new Controller();
     JSONObject record = new JSONObject();
+
+
     public void readDataBase() throws Exception{
         try{
 
@@ -25,10 +28,11 @@ Controller controller = new Controller();
             Statement stmt=con.createStatement();
             ResultSet rs=stmt.executeQuery("select * from testtable");
             while(rs.next()){
+
                 record.put("VarTest", rs.getString("VarTest"));
                 record.put("IntTest", rs.getInt("IntTest"));
-                controller.hello(record);
 
+                controller.hello(record);
             }
 
 
