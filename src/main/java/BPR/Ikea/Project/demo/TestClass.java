@@ -15,10 +15,10 @@ import javax.annotation.processing.Generated;
 })
 public class TestClass {
 
-    @JsonProperty("varTest")
+
         private String varTest;
 
-    @JsonProperty("intTest")
+
         private int intTest;
 
 
@@ -27,19 +27,19 @@ public class TestClass {
         this.varTest = varTest;
         this.intTest = intTest;
     }
-    @JsonProperty("varTest")
+
     public String getVarTest() {
         return varTest;
     }
-    @JsonProperty("varTest")
+
     public void setVarTest(String varTest) {
         this.varTest = varTest;
     }
-    @JsonProperty("intTest")
+
     public int getIntTest() {
         return intTest;
     }
-    @JsonProperty("intTest")
+
     public void setIntTest(int intTest) {
         this.intTest = intTest;
     }

@@ -2,6 +2,7 @@ package BPR.Ikea.Project.demo;
 
 
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +25,7 @@ public class Controller {
     }
 
     // https://batchelor-project-ikea.herokuapp.com/db
-    @GetMapping("/db")
+    @PostMapping("/db")
     public ArrayList<TestClass> testMap(){
 
         return db.testClasses;
