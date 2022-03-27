@@ -14,7 +14,7 @@ import java.util.Map;
 
 @RestController
 public class Controller {
-
+        @Autowired
         DBConnection db = new DBConnection();
 
 
@@ -25,7 +25,7 @@ public class Controller {
     }
 
     // https://batchelor-project-ikea.herokuapp.com/db
-    @PostMapping("/db")
+    @RequestMapping(value = "/db", produces = "application/json")
     public ArrayList<TestClass> testMap(){
 
         return db.testClasses;
