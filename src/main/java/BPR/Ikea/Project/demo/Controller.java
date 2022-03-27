@@ -19,9 +19,10 @@ public class Controller {
     }
 
     // https://batchelor-project-ikea.herokuapp.com/
-    @GetMapping("/")
+    @GetMapping("/db")
     public Map<String,Object> hello(JSONObject db){
         System.out.println(db.toString());
+        db.toString();
         return db;
 
     }
