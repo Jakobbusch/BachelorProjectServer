@@ -27,10 +27,10 @@ public class Controller {
 
     // https://batchelor-project-ikea.herokuapp.com/db
     @GetMapping("/db")
-    public String hello(@RequestParam Map<String, Object> db){
+    public Map<String, Object> hello(@RequestParam Map<String, Object> db){
             System.out.println(db.toString());
 
-        return db.toString();
+        return db;
 
     }
 
