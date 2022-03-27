@@ -2,7 +2,9 @@ package BPR.Ikea.Project.demo;
 
 
 import org.json.simple.JSONObject;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.lang.reflect.Array;
@@ -25,10 +27,10 @@ public class Controller {
 
     // https://batchelor-project-ikea.herokuapp.com/db
     @GetMapping("/db")
-    public Map<String,Object> hello(JSONObject db){
+    public ResponseEntity<String> hello(@RequestParam JSONObject db){
             System.out.println(db.toString());
 
-        return db;
+        return ResponseEntity.ok(db.toString());
 
     }
 
