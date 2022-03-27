@@ -3,9 +3,7 @@ package BPR.Ikea.Project.demo;
 
 import org.json.simple.JSONObject;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -16,7 +14,7 @@ import java.util.Map;
 @RestController
 public class Controller {
 
-
+        DBConnection db = new DBConnection();
 
 
     // http://localhost:8080/hello-world
@@ -27,10 +25,9 @@ public class Controller {
 
     // https://batchelor-project-ikea.herokuapp.com/db
     @GetMapping("/db")
-    public Map<String, Object> hello(@RequestParam Map<String, Object> db){
-            System.out.println(db.toString());
+    public ArrayList<TestClass> testMap(){
 
-        return db;
+        return db.testClasses;
 
     }
 
