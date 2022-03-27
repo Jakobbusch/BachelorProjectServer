@@ -14,7 +14,7 @@ import java.util.List;
 @Configuration
 public class DBConnection {
 
-
+Controller controller = new Controller();
     JSONObject record = new JSONObject();
     public void readDataBase() throws Exception{
         try{
@@ -23,10 +23,14 @@ public class DBConnection {
                     "jdbc:mysql://b71f9c84952672:c5fcf155@eu-cdbr-west-02.cleardb.net:3306/heroku_ed5823d8c16859d","b71f9c84952672","c5fcf155");
 
             Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("select * FROM testtable");
-            while(rs.next())
+            ResultSet rs=stmt.executeQuery("select * from testtable");
+            while(rs.next()){
                 record.put("VarTest", rs.getString("VarTest"));
                 record.put("IntTest", rs.getInt("IntTest"));
+                controller.hello(record);
+
+            }
+
 
 
 

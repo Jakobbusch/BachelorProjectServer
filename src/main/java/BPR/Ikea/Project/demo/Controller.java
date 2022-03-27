@@ -10,7 +10,7 @@ import java.util.Map;
 @RestController
 public class Controller {
 
-    DBConnection db= new DBConnection();
+
 
     // http://localhost:8080/hello-world
     @GetMapping("/hello-world")
@@ -20,9 +20,9 @@ public class Controller {
 
     // https://batchelor-project-ikea.herokuapp.com/
     @GetMapping("/")
-    public Map<String,Object> hello(){
-
-        return db.record;
+    public Map<String,Object> hello(JSONObject db){
+        System.out.println(db.toString());
+        return db;
 
     }
 
