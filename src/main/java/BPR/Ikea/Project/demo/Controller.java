@@ -1,22 +1,20 @@
 package BPR.Ikea.Project.demo;
 
 
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 
 @RestController
 public class Controller {
-        @Autowired
-        DBConnection db = new DBConnection();
 
+    private final DBConnection dbConnection;
+
+    @Autowired
+    public Controller(DBConnection dbConnection) {
+        this.dbConnection = dbConnection;
+    }
 
     // http://localhost:8080/hello-world
     @GetMapping("/hello-world")
@@ -25,10 +23,11 @@ public class Controller {
     }
 
     // https://batchelor-project-ikea.herokuapp.com/db
-    @RequestMapping(value = "/db", produces = "application/json")
-    public ArrayList<TestClass> testMap(){
+    @GetMapping("/db")
+    public ArrayList<testtable> testMap() throws Exception {
 
-        return db.testClasses;
+
+        return dbConnection.readDataBase();
 
     }
 
