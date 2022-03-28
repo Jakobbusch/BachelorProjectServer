@@ -22,12 +22,12 @@ public class Controller {
         return "Hej fra hello world!! ";
     }
 
-    // https://batchelor-project-ikea.herokuapp.com/db
-    @GetMapping("/db")
-    public ArrayList<testtable> testMap() throws Exception {
+    // https://batchelor-project-ikea.herokuapp.com/products
+    @GetMapping("/products")
+    public ArrayList<Product> productList() throws Exception {
 
 
-        return dbConnection.readDataBase();
+        return dbConnection.productsDB();
 
     }
 

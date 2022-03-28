@@ -12,26 +12,29 @@ import java.util.ArrayList;
 public class DBConnection {
 
 
-    ArrayList <testtable> testClasses = new ArrayList();
+    ArrayList <Product> productArrayList = new ArrayList();
 
 
-    public ArrayList<testtable> readDataBase() throws Exception{
-            testClasses.clear();
+    public ArrayList<Product> productsDB() throws Exception{
+        productArrayList.clear();
             Connection con= DriverManager.getConnection(
                     "jdbc:mysql://b71f9c84952672:c5fcf155@eu-cdbr-west-02.cleardb.net:3306/heroku_ed5823d8c16859d","b71f9c84952672","c5fcf155");
 
             Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("select * from testtable");
+            ResultSet rs=stmt.executeQuery("select * from products");
 
             while(rs.next()){
-                testtable testClass = new testtable(rs.getString("varTest"),
-                                                    rs.getInt("intTest"));
+                Product product = new Product(rs.getInt("productID"),
+                                              rs.getString("productName"),
+                                              rs.getString("productType"),
+                                              rs.getDouble("productPrice"),
+                                              rs.getDouble("productWidth"),
+                                              rs.getDouble("productHeight"),
+                                              rs.getDouble("productWeight"));
 
-                testClasses.add(testClass);
-
-
+                productArrayList.add(product);
             }
-           return testClasses;
+           return productArrayList;
 
 
         }
