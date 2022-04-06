@@ -23,7 +23,7 @@ public class Controller {
     }
 
     // https://batchelor-project-ikea.herokuapp.com/products
-    @CrossOrigin(origins = "https://bachelor-project-admin.herokuapp.com/:5000")
+    @CrossOrigin(origins = "https://bachelor-project-admin.herokuapp.com:5000/")
     @GetMapping("/products")
     public ArrayList<Product> productList() throws Exception {
 
