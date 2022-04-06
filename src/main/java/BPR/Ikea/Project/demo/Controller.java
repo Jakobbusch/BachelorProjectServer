@@ -23,6 +23,7 @@ public class Controller {
     }
 
     // https://batchelor-project-ikea.herokuapp.com/products
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/products")
     public ArrayList<Product> productList() throws Exception {
 
