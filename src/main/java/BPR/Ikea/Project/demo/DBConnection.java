@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class DBConnection {
 
 
-    ArrayList <Product> productArrayList = new ArrayList();
+    private ArrayList <Product> productArrayList = new ArrayList();
 
 
     public ArrayList<Product> productsDB() throws Exception{

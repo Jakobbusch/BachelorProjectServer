@@ -18,25 +18,25 @@ import javax.persistence.Table;
 public class Product {
     @Id
     @Column(name = "productID", nullable = false)
-    public int productID;
+    private int productID;
 
     @Column(name = "productName")
-    public String productName;
+    private String productName;
 
     @Column(name = "productType")
-    public String productType;
+    private String productType;
 
     @Column(name = "productPrice")
-    public double productPrice;
+    private double productPrice;
 
     @Column(name = "productWidth")
-    public double productWidth;
+    private double productWidth;
 
     @Column(name = "productHeight")
-    public double productHeight;
+    private double productHeight;
 
     @Column(name = "productWeight")
-    public double productWeight;
+    private double productWeight;
 
     public Product() {
     }
