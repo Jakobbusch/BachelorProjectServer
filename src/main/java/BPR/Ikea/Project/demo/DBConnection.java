@@ -13,12 +13,15 @@ public class DBConnection {
 
 
     private ArrayList <Product> productArrayList = new ArrayList();
+    private Connection con;
 
-
+    private void createDBConnection() throws Exception{
+        con = DriverManager.getConnection(
+                "jdbc:mysql://b71f9c84952672:c5fcf155@eu-cdbr-west-02.cleardb.net:3306/heroku_ed5823d8c16859d","b71f9c84952672","c5fcf155");
+    }
     public ArrayList<Product> productsDB() throws Exception{
         productArrayList.clear();
-            Connection con= DriverManager.getConnection(
-                    "jdbc:mysql://b71f9c84952672:c5fcf155@eu-cdbr-west-02.cleardb.net:3306/heroku_ed5823d8c16859d","b71f9c84952672","c5fcf155");
+        createDBConnection();
 
             Statement stmt=con.createStatement();
             ResultSet rs=stmt.executeQuery("select * from products");
@@ -33,9 +36,10 @@ public class DBConnection {
                                               rs.getDouble("productWeight"));
 
                 productArrayList.add(product);
-            }
-           return productArrayList;
 
+            }
+        con.close();
+           return productArrayList;
 
         }
 
