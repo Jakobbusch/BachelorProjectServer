@@ -11,8 +11,10 @@ public class Controller {
 
     private final DBConnection dbConnection;
 
+
     @Autowired
     public Controller(DBConnection dbConnection) {
+
         this.dbConnection = dbConnection;
     }
 
@@ -26,7 +28,6 @@ public class Controller {
     @CrossOrigin(origins = "https://bachelor-project-admin.herokuapp.com")
     @GetMapping("/products")
     public ArrayList<Product> productList() throws Exception {
-
 
         return dbConnection.productsDB();
 
