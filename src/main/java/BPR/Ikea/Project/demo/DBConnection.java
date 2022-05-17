@@ -13,33 +13,28 @@ public class DBConnection {
 
 
     private ArrayList <Product> productArrayList = new ArrayList();
-
-    String pass;
+    private String password;
     private boolean adminBool = false;
     private Connection con;
-    private Admin admindb = new Admin();
+
 
 
     public boolean LoginCheckInDB(Admin admin) throws Exception {
 
 
         con = DriverManager.getConnection(
-                "jdbc:mysql://b71f9c84952672:c5fcf155@eu-cdbr-west-02.cleardb.net:3306/heroku_ed5823d8c16859d","b71f9c84952672","c5fcf155");
-
+                "jdbc:mysql://d5mcw7cvheivyqp9:nyxzx8czn4kekwn0@i54jns50s3z6gbjt.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/lsixgbt8anazl3cm","d5mcw7cvheivyqp9","nyxzx8czn4kekwn0");
+                                //mysql://b71f9c84952672:c5fcf155@eu-cdbr-west-02.cleardb.net:3306/heroku_ed5823d8c16859d           b71f9c84952672","c5fcf155"
 
         Statement stmt=con.createStatement();
         ResultSet rs=stmt.executeQuery("SELECT * FROM admin WHERE adminUsername ='"+admin.getAdminUsername()+"'");
 
         System.out.println("Admin: "+admin.getAdminPassword());
         while (rs.next()){
-            pass = rs.getString("adminPassword");
-            System.out.println("from db: " + pass);
-
-            admindb.setAdminUsername(rs.getString("adminUsername"));
-            admindb.setAdminPassword(rs.getString("adminPassword"));
+            password = rs.getString("adminPassword");
         }
 
-        if (admin.getAdminPassword().equals(pass)){
+        if (admin.getAdminPassword().equals(password)){
             adminBool = true;
         }
         else {
@@ -52,10 +47,12 @@ public class DBConnection {
         return adminBool;
     }
 
-    public ArrayList<Product> productsDB() throws Exception{
+    public ArrayList<Product> GetProductsFromDB() throws Exception{
 
         con = DriverManager.getConnection(
-                "jdbc:mysql://b71f9c84952672:c5fcf155@eu-cdbr-west-02.cleardb.net:3306/heroku_ed5823d8c16859d","b71f9c84952672","c5fcf155");
+                "jdbc:mysql://d5mcw7cvheivyqp9:nyxzx8czn4kekwn0@i54jns50s3z6gbjt.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/lsixgbt8anazl3cm","d5mcw7cvheivyqp9","nyxzx8czn4kekwn0");
+        //mysql://b71f9c84952672:c5fcf155@eu-cdbr-west-02.cleardb.net:3306/heroku_ed5823d8c16859d           b71f9c84952672","c5fcf155"
+
         productArrayList.clear();
 
 
