@@ -16,7 +16,7 @@ public class DBConnection {
     private String password;
     private boolean adminBool = false;
     private Connection con;
-
+    private ArrayList<Instruction> instructions;
 
 
     public boolean LoginCheckInDB(Admin admin) throws Exception {
@@ -56,20 +56,45 @@ public class DBConnection {
         productArrayList.clear();
 
 
-            Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("select * from products");
+        Statement stmt=con.createStatement();;
+        ResultSet rs=stmt.executeQuery("select * from products INNER JOIN qrcode ON products.productID = qrcode.productID");
+        Statement stmt2=con.createStatement();;
+        ResultSet rsAssembly=stmt2.executeQuery("select * from products INNER JOIN assembly ON products.productID = assembly.productID");
+        Statement stmt3=con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);;
+        ResultSet rsInstructions=stmt3.executeQuery("select * from assembly INNER JOIN instruction ON assembly.assemblyID = instruction.assemblyID");
 
-            while(rs.next()){
-                Product product = new Product(rs.getInt("productID"),
-                                              rs.getString("productName"),
-                                              rs.getString("productType"),
-                                              rs.getDouble("productPrice"),
-                                              rs.getDouble("productWidth"),
-                                              rs.getDouble("productHeight"),
-                                              rs.getDouble("productWeight"));
+        while(rs.next() && rsAssembly.next()){
 
-                productArrayList.add(product);
+            instructions = new ArrayList<>();
+                rsInstructions.beforeFirst();
+                while (rsInstructions.next() ){
+                    if (rsInstructions.getInt("assemblyID") == rsAssembly.getInt("assemblyID")){
+                        instructions.add(new Instruction(rsInstructions.getInt("instructionID"),rsInstructions.getInt("stepNumber"),rsInstructions.getString("instructionText")));
+                    }
+                }
 
+
+
+            Assembly assembly = new Assembly(rsAssembly.getInt("assemblyID"),rsAssembly.getString("webGLaddress"),
+                   rsAssembly.getInt("averageBuildTime"),rsAssembly.getInt("buildDifficulty"),instructions);
+            Product product = new Product(rs.getInt("productID"),
+                    rs.getString("productName"),
+                    rs.getString("productType"),
+                    rs.getDouble("productPrice"),
+                    rs.getDouble("productWidth"),
+                    rs.getDouble("productHeight"),
+                    rs.getDouble("productWeight"),
+                    rs.getString("productImage"),
+                    rs.getInt("productPartAmount"),
+                    rs.getString("productColor"),
+                    rs.getString("productPlanImage"),
+                    rs.getInt("qrcodeID"),assembly
+
+            );
+
+            productArrayList.add(product);
+
+            System.out.println(product.getAssembly().getAssemblyInstructions());
             }
         con.close();
            return productArrayList;
