@@ -9,41 +9,41 @@ import javax.persistence.Table;
 @Table(name = "products")
 public class Product {
     @Id
-    @Column(name = "productID", nullable = false)
-    private int productID;
+    @Column(name = "iD", nullable = false)
+    private int iD;
 
-    @Column(name = "productName")
-    private String productName;
+    @Column(name = "name")
+    private String name;
 
-    @Column(name = "productType")
-    private String productType;
+    @Column(name = "type")
+    private String type;
 
-    @Column(name = "productPrice")
-    private double productPrice;
+    @Column(name = "price")
+    private double price;
 
-    @Column(name = "productWidth")
-    private double productWidth;
+    @Column(name = "width")
+    private double width;
 
-    @Column(name = "productHeight")
-    private double productHeight;
+    @Column(name = "height")
+    private double height;
 
-    @Column(name = "productWeight")
-    private double productWeight;
+    @Column(name = "weight")
+    private double weight;
 
-    @Column(name = "productImage")
-    private String productImage;
+    @Column(name = "image")
+    private String image;
 
-    @Column(name = "productPartAmount")
-    private int productPartAmount;
+    @Column(name = "partAmount")
+    private int partAmount;
 
-    @Column(name = "productColor")
-    private String productColor;
+    @Column(name = "color")
+    private String color;
 
-    @Column(name = "productPlanImage")
-    private String productPlanImage;
+    @Column(name = "planImage")
+    private String planImage;
 
-    @Column(name = "productQRCode")
-    private int productQRCode;
+    @Column(name = "qrCode")
+    private int qrCode;
 
     @Column(name = "assembly")
     private Assembly assembly;
@@ -51,118 +51,118 @@ public class Product {
     public Product() {
     }
 
-    public Product(int productID, String productName, String productType, double productPrice, double productWidth, double productHeight,
-                   double productWeight,String productImage, int productPartAmount,String productColor,String productPlanImage, int productQRCode, Assembly assembly) {
-        this.productID = productID;
-        this.productName = productName;
-        this.productType = productType;
-        this.productPrice = productPrice;
-        this.productWidth = productWidth;
-        this.productHeight = productHeight;
-        this.productWeight = productWeight;
-        this.productImage = productImage;
-        this.productPartAmount = productPartAmount;
-        this.productColor = productColor;
-        this.productPlanImage = productPlanImage;
-        this.productQRCode = productQRCode;
+    public Product(int iD, String name, String type, double price, double width, double height,
+                   double weight, String image, int partAmount, String color, String planImage, int qrCode, Assembly assembly) {
+        this.iD = iD;
+        this.name = name;
+        this.type = type;
+        this.price = price;
+        this.width = width;
+        this.height = height;
+        this.weight = weight;
+        this.image = image;
+        this.partAmount = partAmount;
+        this.color = color;
+        this.planImage = planImage;
+        this.qrCode = qrCode;
         this.assembly = assembly;
 
     }
 
-    public int getProductID() {
-        return productID;
+    public int getID() {
+        return iD;
     }
 
-    public void setProductID(int productID) {
-        this.productID = productID;
+    public void setID(int iD) {
+        this.iD = iD;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getName() {
+        return name;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getProductType() {
-        return productType;
+    public String getType() {
+        return type;
     }
 
-    public void setProductType(String productType) {
-        this.productType = productType;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public double getProductPrice() {
-        return productPrice;
+    public double getPrice() {
+        return price;
     }
 
-    public void setProductPrice(double productPrice) {
-        this.productPrice = productPrice;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
-    public double getProductWidth() {
-        return productWidth;
+    public double getWidth() {
+        return width;
     }
 
-    public void setProductWidth(double productWidth) {
-        this.productWidth = productWidth;
+    public void setWidth(double width) {
+        this.width = width;
     }
 
-    public double getProductHeight() {
-        return productHeight;
+    public double getHeight() {
+        return height;
     }
 
-    public void setProductHeight(double productHeight) {
-        this.productHeight = productHeight;
+    public void setHeight(double height) {
+        this.height = height;
     }
 
-    public double getProductWeight() {
-        return productWeight;
+    public double getWeight() {
+        return weight;
     }
 
-    public void setProductWeight(double productWeight) {
-        this.productWeight = productWeight;
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 
-    public int getProductQRCode() {
-        return productQRCode;
+    public int getQrCode() {
+        return qrCode;
     }
 
-    public void setProductQRCode(int productQRCode) {
-        this.productQRCode = productQRCode;
+    public void setQrCode(int qrCode) {
+        this.qrCode = qrCode;
     }
 
-    public String getProductImage() {
-        return productImage;
+    public String getImage() {
+        return image;
     }
 
-    public void setProductImage(String productImage) {
-        this.productImage = productImage;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public int getProductPartAmount() {
-        return productPartAmount;
+    public int getPartAmount() {
+        return partAmount;
     }
 
-    public void setProductPartAmount(int productPartAmount) {
-        this.productPartAmount = productPartAmount;
+    public void setPartAmount(int partAmount) {
+        this.partAmount = partAmount;
     }
 
-    public String getProductColor() {
-        return productColor;
+    public String getColor() {
+        return color;
     }
 
-    public void setProductColor(String productColor) {
-        this.productColor = productColor;
+    public void setColor(String color) {
+        this.color = color;
     }
 
-    public String getProductPlanImage() {
-        return productPlanImage;
+    public String getPlanImage() {
+        return planImage;
     }
 
-    public void setProductPlanImage(String productPlanImage) {
-        this.productPlanImage = productPlanImage;
+    public void setPlanImage(String planImage) {
+        this.planImage = planImage;
     }
 
     public Assembly getAssembly() {

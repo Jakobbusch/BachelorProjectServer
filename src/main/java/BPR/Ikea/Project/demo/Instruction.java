@@ -1,38 +1,54 @@
 package BPR.Ikea.Project.demo;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "instruction")
 public class Instruction {
 
-    private int instructionID;
-    private int instructionStepNumber;
-    private String instructionText;
+    @Id
+    @Column(name = "iD", nullable = false)
+    private int iD;
 
-    public Instruction(int instructionID, int instructionStepNumber, String instructionText) {
-        this.instructionID = instructionID;
-        this.instructionStepNumber = instructionStepNumber;
-        this.instructionText = instructionText;
+    @Column(name = "stepNumber")
+    private int stepNumber;
+
+    @Column(name = "text")
+    private String text;
+
+    public Instruction() {
     }
 
-    public int getInstructionID() {
-        return instructionID;
+    public Instruction(int iD, int stepNumber, String text) {
+        this.iD = iD;
+        this.stepNumber = stepNumber;
+        this.text = text;
     }
 
-    public void setInstructionID(int instructionID) {
-        this.instructionID = instructionID;
+    public int getiD() {
+        return iD;
     }
 
-    public int getInstructionStepNumber() {
-        return instructionStepNumber;
+    public void setiD(int iD) {
+        this.iD = iD;
     }
 
-    public void setInstructionStepNumber(int instructionStepNumber) {
-        this.instructionStepNumber = instructionStepNumber;
+    public int getStepNumber() {
+        return stepNumber;
     }
 
-    public String getInstructionText() {
-        return instructionText;
+    public void setStepNumber(int stepNumber) {
+        this.stepNumber = stepNumber;
     }
 
-    public void setInstructionText(String instructionText) {
-        this.instructionText = instructionText;
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }

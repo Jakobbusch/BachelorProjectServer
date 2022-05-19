@@ -11,33 +11,33 @@ import javax.persistence.Table;
 public class Admin {
 
     @Id
-    @Column(name = "adminUsername")
-    private String adminUsername;
+    @Column(name = "username")
+    private String username;
 
-    @Column(name = "adminPassword")
-    private String adminPassword;
+    @Column(name = "password")
+    private String password;
 
     public Admin() {
     }
 
-    public Admin(String adminUsername, String adminPassword) {
-        this.adminUsername = adminUsername;
-        this.adminPassword = adminPassword;
+    public Admin(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
-    public String getAdminUsername() {
-        return adminUsername;
+    public String getUsername() {
+        return username;
     }
 
-    public void setAdminUsername(String adminUsername) {
-        this.adminUsername = adminUsername;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getAdminPassword() {
-        return adminPassword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setAdminPassword(String adminPassword) {
-        this.adminPassword = adminPassword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

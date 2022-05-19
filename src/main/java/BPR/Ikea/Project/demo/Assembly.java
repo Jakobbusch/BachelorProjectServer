@@ -4,57 +4,57 @@ import java.util.ArrayList;
 
 public class Assembly {
 
-    private int assemblyID;
-    private String assemblyWebGL;
-    private int assemblyBuildTime;
-    private int assemblyBuildDifficulty;
-    private ArrayList<Instruction> assemblyInstructions;
+    private int iD;
+    private String webGL;
+    private int buildTime;
+    private int buildDifficulty;
+    private ArrayList<Instruction> instructions;
 
-    public Assembly(int assemblyID, String assemblyWebGL, int assemblyBuildTime, int assemblyBuildDifficulty, ArrayList<Instruction> assemblyInstructions) {
-        this.assemblyID = assemblyID;
-        this.assemblyWebGL = assemblyWebGL;
-        this.assemblyBuildTime = assemblyBuildTime;
-        this.assemblyBuildDifficulty = assemblyBuildDifficulty;
-        this.assemblyInstructions = assemblyInstructions;
+    public Assembly(int iD, String webGL, int buildTime, int buildDifficulty, ArrayList<Instruction> instructions) {
+        this.iD = iD;
+        this.webGL = webGL;
+        this.buildTime = buildTime;
+        this.buildDifficulty = buildDifficulty;
+        this.instructions = instructions;
     }
 
-    public int getAssemblyID() {
-        return assemblyID;
+    public int getiD() {
+        return iD;
     }
 
-    public void setAssemblyID(int assemblyID) {
-        this.assemblyID = assemblyID;
+    public void setiD(int iD) {
+        this.iD = iD;
     }
 
-    public String getAssemblyWebGL() {
-        return assemblyWebGL;
+    public String getWebGL() {
+        return webGL;
     }
 
-    public void setAssemblyWebGL(String assemblyWebGL) {
-        this.assemblyWebGL = assemblyWebGL;
+    public void setWebGL(String webGL) {
+        this.webGL = webGL;
     }
 
-    public int getAssemblyBuildTime() {
-        return assemblyBuildTime;
+    public int getBuildTime() {
+        return buildTime;
     }
 
-    public void setAssemblyBuildTime(int assemblyBuildTime) {
-        this.assemblyBuildTime = assemblyBuildTime;
+    public void setBuildTime(int buildTime) {
+        this.buildTime = buildTime;
     }
 
-    public int getAssemblyBuildDifficulty() {
-        return assemblyBuildDifficulty;
+    public int getBuildDifficulty() {
+        return buildDifficulty;
     }
 
-    public void setAssemblyBuildDifficulty(int assemblyBuildDifficulty) {
-        this.assemblyBuildDifficulty = assemblyBuildDifficulty;
+    public void setBuildDifficulty(int buildDifficulty) {
+        this.buildDifficulty = buildDifficulty;
     }
 
-    public ArrayList<Instruction> getAssemblyInstructions() {
-        return assemblyInstructions;
+    public ArrayList<Instruction> getInstructions() {
+        return instructions;
     }
 
-    public void setAssemblyInstructions(ArrayList<Instruction> assemblyInstructions) {
-        this.assemblyInstructions = assemblyInstructions;
+    public void setInstructions(ArrayList<Instruction> instructions) {
+        this.instructions = instructions;
     }
 }

@@ -19,7 +19,7 @@ public class DBConnection {
     private ArrayList<Instruction> instructions;
 
 
-    public boolean LoginCheckInDB(Admin admin) throws Exception {
+    public boolean loginCheckInDB(Admin admin) throws Exception {
 
 
         con = DriverManager.getConnection(
@@ -27,14 +27,14 @@ public class DBConnection {
                                 //mysql://b71f9c84952672:c5fcf155@eu-cdbr-west-02.cleardb.net:3306/heroku_ed5823d8c16859d           b71f9c84952672","c5fcf155"
 
         Statement stmt=con.createStatement();
-        ResultSet rs=stmt.executeQuery("SELECT * FROM admin WHERE adminUsername ='"+admin.getAdminUsername()+"'");
+        ResultSet rs=stmt.executeQuery("SELECT * FROM admin WHERE adminUsername ='"+admin.getUsername()+"'");
 
-        System.out.println("Admin: "+admin.getAdminPassword());
+        System.out.println("Admin: "+admin.getPassword());
         while (rs.next()){
             password = rs.getString("adminPassword");
         }
 
-        if (admin.getAdminPassword().equals(password)){
+        if (admin.getPassword().equals(password)){
             adminBool = true;
         }
         else {
@@ -47,7 +47,7 @@ public class DBConnection {
         return adminBool;
     }
 
-    public ArrayList<Product> GetProductsFromDB() throws Exception{
+    public ArrayList<Product> getProductsFromDB() throws Exception{
 
         con = DriverManager.getConnection(
                 "jdbc:mysql://d5mcw7cvheivyqp9:nyxzx8czn4kekwn0@i54jns50s3z6gbjt.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/lsixgbt8anazl3cm","d5mcw7cvheivyqp9","nyxzx8czn4kekwn0");
@@ -94,7 +94,7 @@ public class DBConnection {
 
             productArrayList.add(product);
 
-            System.out.println(product.getAssembly().getAssemblyInstructions());
+            System.out.println(product.getAssembly().getInstructions());
             }
         con.close();
            return productArrayList;

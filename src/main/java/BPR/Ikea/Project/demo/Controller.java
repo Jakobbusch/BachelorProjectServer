@@ -21,17 +21,17 @@ public class Controller {
 
     // https://batchelor-project-ikea.herokuapp.com/products
     // @CrossOrigin(origins = "https://bachelor-project-admin.herokuapp.com")
-    @CrossOrigin(origins = "http://localhost:3000/")
+    @CrossOrigin(origins = "https://bachelor-project-admin.herokuapp.com")
     @GetMapping("/products")
-    public ArrayList<Product> GetProductList() throws Exception {
+    public ArrayList<Product> getProductList() throws Exception {
 
-        return dbConnection.GetProductsFromDB();
+        return dbConnection.getProductsFromDB();
 
     }
 
-    @CrossOrigin(origins = "http://localhost:3000/")
+    @CrossOrigin(origins = "https://bachelor-project-admin.herokuapp.com")
     @GetMapping(value = "/admin/{admin}")
-    public Boolean AdminLogin(@PathVariable("admin") String adminString) throws Exception {
+    public Boolean adminLogin(@PathVariable("admin") String adminString) throws Exception {
 
         System.out.println(adminString);
 
@@ -39,7 +39,7 @@ public class Controller {
 
         Admin admin = objectMapper.readValue(adminString, Admin.class);
 
-        return dbConnection.LoginCheckInDB(admin);
+        return dbConnection.loginCheckInDB(admin);
 
     }
 
