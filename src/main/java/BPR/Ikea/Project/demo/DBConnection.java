@@ -19,6 +19,7 @@ public class DBConnection {
     private ArrayList<Instruction> instructions;
 
 
+
     public boolean loginCheckInDB(Admin admin) throws Exception {
 
 
@@ -49,6 +50,9 @@ public class DBConnection {
 
     public ArrayList<Product> getProductsFromDB() throws Exception{
 
+        int count =0;
+
+
         con = DriverManager.getConnection(
                 "jdbc:mysql://d5mcw7cvheivyqp9:nyxzx8czn4kekwn0@i54jns50s3z6gbjt.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/lsixgbt8anazl3cm","d5mcw7cvheivyqp9","nyxzx8czn4kekwn0");
         //mysql://b71f9c84952672:c5fcf155@eu-cdbr-west-02.cleardb.net:3306/heroku_ed5823d8c16859d           b71f9c84952672","c5fcf155"
@@ -56,10 +60,10 @@ public class DBConnection {
         productArrayList.clear();
 
 
-        Statement stmt=con.createStatement();;
+        Statement stmt=con.createStatement();
         ResultSet rs=stmt.executeQuery("select * from products INNER JOIN qrcode ON products.productID = qrcode.productID");
         Statement stmt2=con.createStatement();;
-        ResultSet rsAssembly=stmt2.executeQuery("select * from products INNER JOIN assembly ON products.productID = assembly.productID");
+        ResultSet rsAssembly=stmt2.executeQuery("select * from products LEFT JOIN assembly ON products.productID = assembly.productID");
         Statement stmt3=con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);;
         ResultSet rsInstructions=stmt3.executeQuery("select * from assembly INNER JOIN instruction ON assembly.assemblyID = instruction.assemblyID");
 
@@ -92,9 +96,12 @@ public class DBConnection {
 
             );
 
+            System.out.println(count);
+            count++;
             productArrayList.add(product);
 
             System.out.println(product.getAssembly().getInstructions());
+            System.out.println(product);
             }
         con.close();
            return productArrayList;
