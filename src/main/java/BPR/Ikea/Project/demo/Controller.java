@@ -21,7 +21,7 @@ public class Controller {
 
     // https://batchelor-project-ikea.herokuapp.com/products
     // @CrossOrigin(origins = "https://bachelor-project-admin.herokuapp.com")
-    @CrossOrigin(origins = "https://bachelor-project-admin.herokuapp.com")
+    @CrossOrigin(origins = "http://localhost:3000/")
     @GetMapping("/products")
     public ArrayList<Product> getProductList() throws Exception {
 
@@ -29,7 +29,7 @@ public class Controller {
 
     }
 
-    @CrossOrigin(origins = "https://bachelor-project-admin.herokuapp.com")
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value = "/admin/{admin}")
     public Boolean adminLogin(@PathVariable("admin") String adminString) throws Exception {
 
