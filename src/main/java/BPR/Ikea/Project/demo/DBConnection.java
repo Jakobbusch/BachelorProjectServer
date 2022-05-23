@@ -30,7 +30,7 @@ public class DBConnection {
         Statement stmt=con.createStatement();
         ResultSet rs=stmt.executeQuery("SELECT * FROM admin WHERE adminUsername ='"+admin.getUsername()+"'");
 
-        System.out.println("Admin: "+admin.getPassword());
+        //System.out.println("Admin: "+admin.getPassword());
         while (rs.next()){
             password = rs.getString("adminPassword");
         }
@@ -44,7 +44,7 @@ public class DBConnection {
 
 
         con.close();
-        System.out.println(adminBool);
+        //System.out.println(adminBool);
         return adminBool;
     }
 
@@ -98,15 +98,45 @@ public class DBConnection {
 
             );
 
-            System.out.println(count);
+            //System.out.println(count);
             count++;
             productArrayList.add(product);
 
-            System.out.println(product.getAssembly().getInstructions());
-            System.out.println(product);
+           // System.out.println(product.getAssembly().getInstructions());
+            //System.out.println(product);
             }
         con.close();
            return productArrayList;
+
+        }
+
+        public void updateProducts(ArrayList<Product> p) throws Exception{
+
+            con = DriverManager.getConnection(
+                    "jdbc:mysql://d5mcw7cvheivyqp9:nyxzx8czn4kekwn0@i54jns50s3z6gbjt.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/lsixgbt8anazl3cm","d5mcw7cvheivyqp9","nyxzx8czn4kekwn0");
+
+            Statement stmt=con.createStatement();
+
+
+            String sql = "";
+            ArrayList<String> t = new ArrayList<>();
+            for (int i = 0; i < p.size(); i++) {
+                sql ="";
+                sql += " UPDATE products SET productName = '" +p.get(i).getName() + "' , " + "productType = '" +p.get(i).getType() + "' , " + "productPrice = " +p.get(i).getPrice()
+                        + " , " + "productWidth = " + p.get(i).getWidth() + " , " + "productHeight = " + p.get(i).getHeight() + " , " + "productWeight = " + p.get(i).getWeight();
+
+                sql += " WHERE productID = " + p.get(i).getID() + " AND (productName <> '" + p.get(i).getName() + "' OR " + "productType <> '" + p.get(i).getType()+
+                "' OR " + " productPrice <> " + p.get(i).getPrice() + " OR productWidth <> " + p.get(i).getWidth() + " OR productHeight <> " +
+                        p.get(i).getHeight() + " OR productWeight <> "+p.get(i).getWeight() +");";
+                t.add(sql);
+            }
+        // Must be executed for each product, as the sql statement gets to long otherwise..
+            for (int i = 0; i < t.size(); i++) {
+                stmt.executeUpdate(t.get(i));
+            }
+
+           con.close();
+
 
         }
 
