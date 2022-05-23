@@ -30,8 +30,14 @@ public class Product {
     @Column(name = "weight")
     private double weight;
 
+    @Column(name = "text")
+    private String text;
+
     @Column(name = "image")
     private String image;
+
+    @Column(name = "image2")
+    private String image2;
 
     @Column(name = "partAmount")
     private int partAmount;
@@ -52,7 +58,7 @@ public class Product {
     }
 
     public Product(int iD, String name, String type, double price, double width, double height,
-                   double weight, String image, int partAmount, String color, String planImage, int qrCode, Assembly assembly) {
+                   double weight,String text, String image,String image2, int partAmount, String color, String planImage, int qrCode, Assembly assembly) {
         this.iD = iD;
         this.name = name;
         this.type = type;
@@ -60,7 +66,9 @@ public class Product {
         this.width = width;
         this.height = height;
         this.weight = weight;
+        this.text = text;
         this.image = image;
+        this.image2 = image2;
         this.partAmount = partAmount;
         this.color = color;
         this.planImage = planImage;
@@ -163,6 +171,22 @@ public class Product {
 
     public void setPlanImage(String planImage) {
         this.planImage = planImage;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getImage2() {
+        return image2;
+    }
+
+    public void setImage2(String image2) {
+        this.image2 = image2;
     }
 
     public Assembly getAssembly() {
