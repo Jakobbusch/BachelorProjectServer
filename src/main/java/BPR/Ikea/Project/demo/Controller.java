@@ -3,6 +3,7 @@ package BPR.Ikea.Project.demo;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.AccessType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -12,6 +13,8 @@ public class Controller {
 
     private final DBConnection dbConnection;
 
+    final private String Prod = "https://bachelor-project-admin.herokuapp.com";
+    final private String test = "https://localhost:3000";
 
     @Autowired
     public Controller(DBConnection dbConnection) {
@@ -20,8 +23,9 @@ public class Controller {
     }
 
     // https://batchelor-project-ikea.herokuapp.com/products
+    // @CrossOrigin(origins = "https://localhost:3000")
     // @CrossOrigin(origins = "https://bachelor-project-admin.herokuapp.com")
-    @CrossOrigin(origins = "http://localhost:3000/")
+    @CrossOrigin(origins = Prod)
     @GetMapping("/products")
     public ArrayList<Product> getProductList() throws Exception {
 
@@ -29,7 +33,8 @@ public class Controller {
 
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    //@CrossOrigin(origins = "https://bachelor-project-admin.herokuapp.com")
+    @CrossOrigin(origins = Prod)
     @GetMapping(value = "/admin/{admin}")
     public Boolean adminLogin(@PathVariable("admin") String adminString) throws Exception {
 
@@ -41,6 +46,12 @@ public class Controller {
 
         return dbConnection.loginCheckInDB(admin);
 
+    }
+
+    @CrossOrigin(origins = Prod)
+    @PostMapping(value = "/updateProducts")
+    public void updateProducts(@RequestBody ArrayList<Product> products) throws Exception{
+        System.out.println(products);
     }
 
 }
