@@ -41,6 +41,8 @@ public class DBConnection {
 
         }
 
+        con.close();
+
         return instructions;
 
     }
