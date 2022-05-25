@@ -33,6 +33,14 @@ public class Controller {
 
     }
 
+    @CrossOrigin(origins = Prod)
+    @GetMapping("/instructions/{id}")
+    public ArrayList<Instruction> getInstructions(@PathVariable("id") int id) throws Exception {
+
+        return dbConnection.instructionsInDB(id);
+
+    }
+
     //@CrossOrigin(origins = "https://bachelor-project-admin.herokuapp.com")
     @CrossOrigin(origins = Prod)
     @GetMapping(value = "/admin/{admin}")

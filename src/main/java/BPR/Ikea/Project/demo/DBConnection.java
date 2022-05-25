@@ -20,6 +20,33 @@ public class DBConnection {
 
 
 
+    public ArrayList<Instruction> instructionsInDB(int id) throws Exception{
+
+        instructions = new ArrayList<>();
+
+        con = DriverManager.getConnection(
+                "jdbc:mysql://d5mcw7cvheivyqp9:nyxzx8czn4kekwn0@i54jns50s3z6gbjt.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/lsixgbt8anazl3cm","d5mcw7cvheivyqp9","nyxzx8czn4kekwn0");
+        //mysql://b71f9c84952672:c5fcf155@eu-cdbr-west-02.cleardb.net:3306/heroku_ed5823d8c16859d           b71f9c84952672","c5fcf155"
+
+        Statement stmt=con.createStatement();
+        ResultSet rs=stmt.executeQuery("select * from instruction WHERE instruction.assemblyID ='"+ id +"'");
+
+        while (rs.next()){
+
+            Instruction instruction = new Instruction(
+                    rs.getInt("instructionID"),
+                    rs.getInt("stepNumber"),
+                    rs.getString("instructionText")
+            );
+
+            instructions.add(instruction);
+
+        }
+
+        return instructions;
+
+    }
+
     public boolean loginCheckInDB(Admin admin) throws Exception {
 
 
@@ -52,13 +79,11 @@ public class DBConnection {
 
         int count =0;
 
-
         con = DriverManager.getConnection(
                 "jdbc:mysql://d5mcw7cvheivyqp9:nyxzx8czn4kekwn0@i54jns50s3z6gbjt.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/lsixgbt8anazl3cm","d5mcw7cvheivyqp9","nyxzx8czn4kekwn0");
         //mysql://b71f9c84952672:c5fcf155@eu-cdbr-west-02.cleardb.net:3306/heroku_ed5823d8c16859d           b71f9c84952672","c5fcf155"
 
         productArrayList.clear();
-
 
         Statement stmt=con.createStatement();
         ResultSet rs=stmt.executeQuery("select * from products INNER JOIN qrcode ON products.productID = qrcode.productID");
@@ -76,8 +101,6 @@ public class DBConnection {
                         instructions.add(new Instruction(rsInstructions.getInt("instructionID"),rsInstructions.getInt("stepNumber"),rsInstructions.getString("instructionText")));
                     }
                 }
-
-
 
             Assembly assembly = new Assembly(rsAssembly.getInt("assemblyID"),rsAssembly.getString("webGLaddress"),
                    rsAssembly.getInt("averageBuildTime"),rsAssembly.getInt("buildDifficulty"),instructions);
@@ -100,10 +123,8 @@ public class DBConnection {
 
             System.out.println(count);
             count++;
-            productArrayList.add(product);
 
-            System.out.println(product.getAssembly().getInstructions());
-            System.out.println(product);
+            productArrayList.add(product);
             }
         con.close();
            return productArrayList;
