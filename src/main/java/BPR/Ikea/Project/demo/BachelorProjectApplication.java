@@ -14,6 +14,11 @@ import java.sql.Statement;
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
 public class BachelorProjectApplication {
 
+	/**
+	 * Main method to run server application
+	 * @param args
+	 * @throws Exception
+	 */
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(BachelorProjectApplication.class, args);
 

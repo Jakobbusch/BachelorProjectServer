@@ -18,6 +18,12 @@ public class DBConnection {
     private Connection con;
     private ArrayList<Instruction> instructions;
 
+    /**
+     *Method to get instructions from database
+     * @param id
+     * @return instructions
+     * @throws Exception
+     */
     public ArrayList<Instruction> instructionsInDB(int id) throws Exception{
 
         instructions = new ArrayList<>();
@@ -47,6 +53,12 @@ public class DBConnection {
 
     }
 
+    /**
+     * Method to get admin login from database
+     * @param admin
+     * @return bool
+     * @throws Exception
+     */
     public boolean loginCheckInDB(Admin admin) throws Exception {
 
 
@@ -75,6 +87,11 @@ public class DBConnection {
         return adminBool;
     }
 
+    /**
+     * Method to get products from database
+     * @return list of products
+     * @throws Exception
+     */
     public ArrayList<Product> getProductsFromDB() throws Exception{
 
         int count =0;
@@ -136,6 +153,12 @@ public class DBConnection {
            return productArrayList;
 
         }
+
+    /**
+     * Method to update products in database
+     * @param p
+     * @throws Exception
+     */
     public void updateProducts(ArrayList<Product> p) throws Exception{
 
         con = DriverManager.getConnection(
