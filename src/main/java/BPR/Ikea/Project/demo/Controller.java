@@ -89,5 +89,9 @@ public class Controller {
         dbConnection.updateProducts(products);
 
     }
+    @RequestMapping("/Testing")
+    public @ResponseBody String greeting() {
+        return "This is a test";
+    }
 
 }
