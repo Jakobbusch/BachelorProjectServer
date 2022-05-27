@@ -14,8 +14,10 @@ public class Controller {
 
     private final DBConnection dbConnection;
 
-    final private String Prod = "http://bachelor-project-admin.herokuapp.com";
+    final private String Prod = "https://bachelor-project-admin.herokuapp.com";
     final private String test = "http://localhost:3000";
+    final private String ProdUnity = "https://irongarden.github.io";
+
 
     /**
      * Constructor for Controller
@@ -36,7 +38,7 @@ public class Controller {
      * @return product list from db
      * @throws Exception
      */
-    @CrossOrigin(origins = test)
+    @CrossOrigin(origins = Prod)
     @GetMapping("/products")
     public ArrayList<Product> getProductList() throws Exception {
 
@@ -50,7 +52,7 @@ public class Controller {
      * @return instruction list from db
      * @throws Exception
      */
-    @CrossOrigin(origins = Prod)
+    @CrossOrigin(origins = ProdUnity)
     @GetMapping("/instructions/{id}")
     public ArrayList<Instruction> getInstructions(@PathVariable("id") int id) throws Exception {
 
@@ -64,7 +66,7 @@ public class Controller {
      * @throws Exception
      */
     //@CrossOrigin(origins = "https://bachelor-project-admin.herokuapp.com")
-    @CrossOrigin(origins = test)
+    @CrossOrigin(origins = Prod)
     @GetMapping(value = "/admin/{admin}")
     public Boolean adminLogin(@PathVariable("admin") String adminString) throws Exception {
 
@@ -82,7 +84,7 @@ public class Controller {
      * @param products
      * @throws Exception
      */
-    @CrossOrigin(origins = test)
+    @CrossOrigin(origins = Prod)
     @PutMapping(value="/updateProducts",consumes = "application/json", produces = "application/json")
     public void updateProducts(@RequestBody ArrayList<Product> products) throws Exception{
         System.out.println(products.get(0).getName());
