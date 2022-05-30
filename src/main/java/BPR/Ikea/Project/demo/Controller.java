@@ -91,6 +91,22 @@ public class Controller {
         dbConnection.updateProducts(products);
 
     }
+    //@CrossOrigin(origins = test)
+    @CrossOrigin(origins = ProdUnity)
+    @PutMapping(value="/updateBuildTime")
+    public void updateBuildTime(@RequestBody String data) throws Exception{
+        //System.out.println(data);
+        dbConnection.updateBuildTime(data);
+    }
+
+    //@CrossOrigin(origins = test)
+    @GetMapping("/test")
+    public String test() throws Exception{
+        System.out.println("TESTING :DDD");
+        return "Hello";
+    }
+
+
     @RequestMapping("/Testing")
     public @ResponseBody String greeting() {
         return "This is a test";
