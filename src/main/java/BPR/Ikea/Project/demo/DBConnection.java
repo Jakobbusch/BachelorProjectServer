@@ -194,12 +194,15 @@ public class DBConnection {
                 "jdbc:mysql://d5mcw7cvheivyqp9:nyxzx8czn4kekwn0@i54jns50s3z6gbjt.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/lsixgbt8anazl3cm","d5mcw7cvheivyqp9","nyxzx8czn4kekwn0");
 
         Statement stmt=con.createStatement();
+        Statement stmt2=con.createStatement();
 
         String[] temp = buildTime.split(":");
         System.out.println(temp[0] + " " +temp[1]);
         String sql = "INSERT INTO statistics (assemblyID, singleBuildTime) VALUES (" +temp[1]+","+temp[0]+")";
-        stmt.executeUpdate(sql);
+        String sql2 ="UPDATE assembly SET averageBuildTime = (SELECT AVG(singleBuildTime) FROM statistics WHERE assemblyID ='" + temp[1] +"') WHERE assemblyID ='"+ temp[1] +"'";
 
+        stmt.executeUpdate(sql);
+        stmt2.executeUpdate(sql2);
         con.close();
     }
 }
