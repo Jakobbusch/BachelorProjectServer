@@ -2,9 +2,7 @@ package BPR.Ikea.Project.demo;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mysql.cj.xdevapi.JsonParser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.AccessType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -14,9 +12,9 @@ public class Controller {
 
     private final DBConnection dbConnection;
 
-    final private String Prod = "https://bachelor-project-admin.herokuapp.com";
-    final private String test = "http://localhost:3000";
-    final private String ProdUnity = "https://irongarden.github.io";
+    final private String prodUrl = "https://bachelor-project-admin.herokuapp.com";
+    final private String devUrl = "http://localhost:3000";
+    final private String prodUrlUnity = "https://irongarden.github.io";
 
 
     /**
@@ -38,7 +36,7 @@ public class Controller {
      * @return product list from db
      * @throws Exception
      */
-    @CrossOrigin(origins = Prod)
+    @CrossOrigin(origins = prodUrl)
     @GetMapping("/products")
     public ArrayList<Product> getProductList() throws Exception {
 
@@ -52,7 +50,7 @@ public class Controller {
      * @return instruction list from db
      * @throws Exception
      */
-    @CrossOrigin(origins = ProdUnity)
+    @CrossOrigin(origins = prodUrlUnity)
     @GetMapping("/instructions/{id}")
     public ArrayList<Instruction> getInstructions(@PathVariable("id") int id) throws Exception {
 
@@ -66,7 +64,7 @@ public class Controller {
      * @throws Exception
      */
     //@CrossOrigin(origins = "https://bachelor-project-admin.herokuapp.com")
-    @CrossOrigin(origins = Prod)
+    @CrossOrigin(origins = prodUrl)
     @GetMapping(value = "/admin/{admin}")
     public Boolean adminLogin(@PathVariable("admin") String adminString) throws Exception {
 
@@ -84,27 +82,20 @@ public class Controller {
      * @param products
      * @throws Exception
      */
-    @CrossOrigin(origins = Prod)
+    @CrossOrigin(origins = prodUrl)
     @PutMapping(value="/updateProducts",consumes = "application/json", produces = "application/json")
     public void updateProducts(@RequestBody ArrayList<Product> products) throws Exception{
         System.out.println(products.get(0).getName());
-        dbConnection.updateProducts(products);
+        dbConnection.updateProductsInDB(products);
 
     }
     //@CrossOrigin(origins = test)
-    @CrossOrigin(origins = ProdUnity)
+    @CrossOrigin(origins = prodUrlUnity)
     @PutMapping(value="/updateBuildTime")
     public void updateBuildTime(@RequestBody String data) throws Exception{
-        //System.out.println(data);
-        dbConnection.updateBuildTime(data);
+        dbConnection.updateBuildTimeInDB(data);
     }
 
-    //@CrossOrigin(origins = test)
-    @GetMapping("/test")
-    public String test() throws Exception{
-        System.out.println("TESTING :DDD");
-        return "Hello";
-    }
 
 
     @RequestMapping("/Testing")

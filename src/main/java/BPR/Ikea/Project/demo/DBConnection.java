@@ -159,7 +159,7 @@ public class DBConnection {
      * @param p
      * @throws Exception
      */
-    public void updateProducts(ArrayList<Product> p) throws Exception{
+    public void updateProductsInDB(ArrayList<Product> p) throws Exception{
 
         con = DriverManager.getConnection(
                 "jdbc:mysql://d5mcw7cvheivyqp9:nyxzx8czn4kekwn0@i54jns50s3z6gbjt.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/lsixgbt8anazl3cm","d5mcw7cvheivyqp9","nyxzx8czn4kekwn0");
@@ -194,7 +194,7 @@ public class DBConnection {
      * @param buildTime
      * @throws Exception
      */
-    public void updateBuildTime(String buildTime) throws Exception{
+    public void updateBuildTimeInDB(String buildTime) throws Exception{
         con = DriverManager.getConnection(
                 "jdbc:mysql://d5mcw7cvheivyqp9:nyxzx8czn4kekwn0@i54jns50s3z6gbjt.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/lsixgbt8anazl3cm","d5mcw7cvheivyqp9","nyxzx8czn4kekwn0");
 
