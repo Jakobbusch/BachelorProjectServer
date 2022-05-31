@@ -53,9 +53,13 @@ public class Controller {
     @CrossOrigin(origins = prodUrlUnity)
     @GetMapping("/instructions/{id}")
     public ArrayList<Instruction> getInstructions(@PathVariable("id") int id) throws Exception {
+        try{
+            return dbConnection.instructionsInDB(id);
+        }catch (Exception e){
+            System.out.println(e);
+        }
 
-        return dbConnection.instructionsInDB(id);
-
+        return null;
     }
     /**
      * API for admin login
